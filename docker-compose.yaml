@@ -1,0 +1,60 @@
+version: '2'
+
+services:
+  namenode:
+    image: houssemtebai/namenode
+    container_name: namenode
+    hostname: namenode
+    networks:
+      - hadoop
+    volumes:
+      - hadoop_namenode:/hadoop/dfs/name
+    environment:
+      CLUSTER_NAME: uh-cluster
+      constraint:node=: onet1
+    env_file:
+      - ./hadoop.env
+
+  datanode1:
+    image: houssemtebai/datanode
+    container_name: datanode1    
+    hostname: datanode1
+    depends_on:
+      - namenode
+    networks:
+      - hadoop
+    volumes:
+      - hadoop_datanode1:/hadoop/dfs/data
+    environment:
+      constraint:node=: onet1      
+    env_file:
+      - ./hadoop.env
+
+  datanode2:
+    image: houssemtebai/datanode
+    container_name: datanode2    
+    hostname: datanode2
+    depends_on:
+      - namenode    
+    networks:
+      - hadoop
+    volumes:
+      - hadoop_datanode2:/hadoop/dfs/data
+    environment:
+      constraint:node=: onet2
+    env_file:
+      - ./hadoop.env
+    
+networks:
+  hadoop:
+    external: true
+
+volumes:
+  hadoop_namenode:
+    external: true
+    
+  hadoop_datanode1:
+    external: true
+    
+  hadoop_datanode2:
+    external: true
