@@ -3,10 +3,10 @@ from tweepy import OAuthHandler
 from tweepy import Stream
 from kafka import KafkaProducer, KafkaClient
 
-access_token = "1920762552-451D7cHFBQ7GnAt5DzvWbdpIC14YZMLriL2eei6"
-access_token_secret =  "y8MooYfXzHDdMS66Q7Lu9sdeh8EOiJIB64TwqSk6YAB8a"
-consumer_key =  "0f4xJExLjhteZPUCgv2506cK0"
-consumer_secret =  "Za6ZqzuZthhdlAbjMZvOUeU5C3h1W7Vw71JzfPy7Dwnvmgc7v8"
+access_token = ""
+access_token_secret =  ""
+consumer_key =  ""
+consumer_secret =  ""
 
 class StdOutListener(StreamListener):
     def on_data(self, data):
