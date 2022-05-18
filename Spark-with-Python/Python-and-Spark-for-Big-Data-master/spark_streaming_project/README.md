@@ -21,7 +21,7 @@ spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.0.0,io.delt
 The packages include dependencies for kafka and delta lake.
 ## Architecture
 
-![Architecture](/images/Architecture.png)
+![Architecture](./images/Architecture.png)
 
 ## Extraction
 
@@ -58,7 +58,7 @@ Spark ML library is used to perform TF-IDF (Term Frequence-Inverse Document Freq
 ##### Building the pipeline
 A machine learning pipeline is created using Spark ML library.
 
-![ML Pipeline](/images/MLPipeline.png)
+![ML Pipeline](./images/MLPipeline.png)
 
 The data is initially tokenized and filtered of urls and punctuations using regular expressions before being passed into the pipeline, where
 the stop words are removed. It is then vectorized and term frequency is calculated with the help of CountVectorizer. The next step is to calculate the Inverse Document Frequency. <br/>The TF-IDF product is then passed on to a classifier, Logistic Regression in this case, to make predictions. This particular implementation had an accuracy of 0.8323919410115472, as calculated by a binary classification evaluator. <br/>The pipeline as well as trained model is saved for our use with the streaming data.
